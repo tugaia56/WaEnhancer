@@ -61,6 +61,7 @@ import com.wmods.wppenhacer.xposed.features.others.TextStatusComposer;
 import com.wmods.wppenhacer.xposed.features.others.ToastViewer;
 import com.wmods.wppenhacer.xposed.features.privacy.AntiWa;
 import com.wmods.wppenhacer.xposed.features.privacy.CallPrivacy;
+import com.wmods.wppenhacer.xposed.features.privacy.CustomPrivacy;
 import com.wmods.wppenhacer.xposed.features.privacy.DndMode;
 import com.wmods.wppenhacer.xposed.features.privacy.FreezeLastSeen;
 import com.wmods.wppenhacer.xposed.features.privacy.HideChat;
@@ -129,7 +130,7 @@ public class FeatureLoader {
                     registerReceivers();
                     mApp.registerActivityLifecycleCallbacks(new WaCallback());
                     sendEnabledBroadcast(mApp);
-//                  XposedHelpers.setStaticIntField(XposedHelpers.findClass("com.whatsapp.util.Log", loader), "level", 5);
+                    XposedHelpers.setStaticIntField(XposedHelpers.findClass("com.whatsapp.util.Log", loader), "level", 5);
                     var timemillis2 = System.currentTimeMillis() - timemillis;
                     XposedBridge.log("Loaded Hooks in " + timemillis2 + "ms");
                 } catch (Throwable e) {
@@ -268,7 +269,8 @@ public class FeatureLoader {
                 TextStatusComposer.class,
                 ToastViewer.class,
                 MenuHome.class,
-                AntiWa.class
+                AntiWa.class,
+                CustomPrivacy.class
         };
         XposedBridge.log("Loading Plugins");
         var executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());

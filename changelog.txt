@@ -1,5 +1,8 @@
-[CRITICAL FIX]
-* Fixed missing icons
+[Custom Privacy]
+* Now customized privacy takes priority over global privacy.
 
+[SEPARATE GROUP]
+* Fixed bug
 
-
+[WAE]
+* Update translations
